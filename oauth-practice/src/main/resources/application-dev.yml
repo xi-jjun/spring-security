@@ -1,0 +1,30 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  datasource:
+    url: ${local.url}
+    driver-class-name: org.h2.Driver
+    username: ${local.username}
+    password: ${local.password}
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: ${google.client-id}
+            clientSecret: ${google.client-secret}
+            scope:
+              - email
+              - profile
+
+logging:
+  level: debug
